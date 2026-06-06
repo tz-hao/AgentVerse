@@ -1,16 +1,55 @@
-# Ignore other project folders
-/Agent/
-/frontend/
+# ========== Other project folders (not uploaded) ==========
+/project-doc.md
 
-/项目介绍.md
+# ========== Dependencies ==========
+node_modules/
 
-# Backend specific ignores
-backend/node_modules/
-backend/dist/
-backend/.env
-backend/*.log
-backend/database.sqlite
+# ========== Build output ==========
+dist/
+.next/
+out/
+build/
 
-# System files
+# ========== Environment files (secrets) ==========
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ========== Database files ==========
+*.sqlite
+*.sqlite3
+*.db
+
+# ========== Logs ==========
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dev-server*.log
+
+# ========== IDE / Editor ==========
+.vscode/
+.idea/
+*.swp
+*.swo
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# ========== TypeScript ==========
+*.tsbuildinfo
+next-env.d.ts
+
+# ========== Test / Coverage ==========
+coverage/
+.nyc_output/
+
+# ========== AI assistant (generated) ==========
+CLAUDE.md
+AGENTS.md
+
+# ========== Misc ==========
+*.pem
+.vercel

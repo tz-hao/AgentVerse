@@ -1,0 +1,47 @@
+{
+  "name": "sovereigngraph-subgraph",
+  "version": "1.0.0",
+  "description": "Subsquid subgraph for SovereignGraph - indexing SBT and relationship events from Portaldot ink! contracts",
+  "build": {
+    "processor": {
+      "name": "@subsquid/substrate-processor",
+      "version": "7.2.0"
+    },
+    "contracts": [
+      {
+        "name": "SBTContract",
+        "address": "0x0000000000000000000000000000000000000000",
+        "events": [
+          "SBTMinted",
+          "SBTMetadataUpdated"
+        ]
+      },
+      {
+        "name": "RelationshipContract",
+        "address": "0x0000000000000000000000000000000000000001",
+        "events": [
+          "RelationshipCreated",
+          "RelationshipRevoked"
+        ]
+      }
+    ]
+  },
+  "processor": {
+    "chain": "wss://testnet.portaldot.io",
+    "dataSource": {
+      "archive": "https://testnet.portaldot.io/graphql"
+    }
+  },
+  "entities": [
+    "SbtNode",
+    "RelationshipEdge"
+  ],
+  "database": {
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "database": "sovereigngraph",
+    "user": "postgres",
+    "password": "postgres"
+  }
+}
