@@ -1,7 +1,7 @@
 # Ignore other project folders
 /Agent/
 /frontend/
-/web3/
+
 /项目介绍.md
 
 # Backend specific ignores
