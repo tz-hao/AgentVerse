@@ -1,0 +1,158 @@
+@import 'tailwindcss';
+@import 'reactflow/dist/style.css';
+
+/* ── 核心配色变量 ── */
+:root {
+  --color-iron-red: #e62e2e;
+  --color-metal-silver: #c8c9cb;
+  --color-deep-space: #0a0a10;
+  --color-neon-orange: #ff7a00;
+  --color-iron-dark: #121218;
+  --color-iron-gray: #2a2a38;
+  --color-glow-red: rgba(230, 46, 46, 0.6);
+  --color-glow-orange: rgba(255, 122, 0, 0.8);
+}
+
+/* ── 全局基础 ── */
+body {
+  background: var(--color-deep-space);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800' opacity='0.08'%3E%3Cpath fill='none' stroke='%23c8c9cb' stroke-width='0.6' d='M100 200 L700 200 M150 300 L650 300 M80 500 L720 500 M200 100 L200 700 M400 80 L400 720 M600 150 L600 650' stroke-dasharray='8 4'/%3E%3Ccircle cx='400' cy='400' r='120' stroke='%23e62e2e' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  color: var(--color-metal-silver);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* 背景光点 */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle, var(--color-neon-orange) 0.5px, transparent 0.5px);
+  background-size: 40px 40px;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+  animation: floatPoints 20s linear infinite;
+}
+
+@keyframes floatPoints {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
+
+/* ── 自定义字体 ── */
+.font-orbitron {
+  font-family: var(--font-orbitron), monospace;
+}
+
+/* ── 动画 ── */
+@keyframes sweepLight {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Glow sweep overlay ── */
+.glow-sweep {
+  position: relative;
+  overflow: hidden;
+}
+.glow-sweep::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, var(--color-glow-red), transparent);
+  animation: sweepLight 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── 骨架屏 ── */
+.skeleton {
+  background: linear-gradient(90deg, var(--color-iron-gray) 25%, var(--color-iron-dark) 50%, var(--color-iron-gray) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+/* ── 自定义滚动条 ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-deep-space);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-iron-gray);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-iron-red);
+}
+
+/* ── 选中文本颜色 ── */
+::selection {
+  background: var(--color-iron-red);
+  color: white;
+}
+
+.react-flow__controls {
+  border: 1px solid rgba(34, 211, 238, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 24px rgba(34, 211, 238, 0.12);
+}
+
+.react-flow__controls-button {
+  background: #0a0a0f;
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+  color: #67e8f9;
+}
+
+.react-flow__controls-button:hover {
+  background: rgba(34, 211, 238, 0.1);
+}
+
+.react-flow__controls-button svg {
+  fill: currentColor;
+}
+
+.react-flow__node {
+  font-family: var(--font-inter), monospace;
+}
